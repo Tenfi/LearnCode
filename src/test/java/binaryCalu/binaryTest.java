@@ -74,10 +74,14 @@ public class binaryTest {
 
     @Test
     public void test(){
-        int i=1;
+        int i=-1;
         print(i);  // 原码
         print(~i); // 反码
         print(~i+1);  // 补码
+        //zigzag
+        print(i<<1);
+        print(i>>31);
+        print((i<<1)^(i>>31));
     }
 
     @Test
@@ -94,6 +98,9 @@ public class binaryTest {
         System.out.println(Integer.toBinaryString(10));
         // 十进制转十六进制
         System.out.println(Integer.toHexString(10));
+
     }
+
+
 
 }
