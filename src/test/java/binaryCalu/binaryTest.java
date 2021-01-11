@@ -102,5 +102,17 @@ public class binaryTest {
     }
 
 
+    @Test
+    public void test21(){
+        int types= 363562;
+        System.out.println((types & 0x2) == 0x2);
+        System.out.println(types & 0x8);
+        System.out.println(Integer.toBinaryString(0x40000));
+        System.out.println(Double.parseDouble("100110"));
+
+        String a="1100000110011000101110111001010010001000";
+        System.out.println(a.substring(0,7));
+        System.out.println(a.substring(7,14));
+    }
 
 }
