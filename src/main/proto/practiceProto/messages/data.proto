@@ -1,0 +1,25 @@
+// Google Protocol Buffers Version 3.
+syntax = "proto3";
+
+// Package name.
+package prcticeProto.messages;
+
+// Options for code generation.
+option java_package = "learnProto.practiceTest.protoModel";
+option java_outer_classname = "SchoolModel";
+option java_multiple_files = true;
+
+// import packages
+import "google/protobuf/any.proto";
+import "practiceProto/categories/student.proto";
+
+message School {
+  message Location{
+    string name=1;
+    uint32 id=2;
+  }
+  Location schoolLocation = 1;
+  bool isOpen =2;
+  repeated categories.Student allStudents = 3;
+  google.protobuf.Any extend =4;
+}

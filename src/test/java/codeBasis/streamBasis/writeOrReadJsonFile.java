@@ -3,6 +3,7 @@ package codeBasis.streamBasis;
 import org.junit.Test;
 
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 
 /**
  * @author huangtengfei
@@ -51,17 +52,8 @@ public class writeOrReadJsonFile {
 
     public static void writeStrToJsonFile2(String data, String filePath, String fileName) {
         String path=filePath + fileName+ ".json";
-        //如果文件不存在，则新建一个
-        File file = new File(path);
-        if (!file.exists()) {
-            try {
-                file.createNewFile();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
         //写入数据，默认utf-8编码，如果有中文可以改为gbk
-        try(BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(path,false), "UTF-8"))) {
+        try(BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(path,false), StandardCharsets.UTF_8))) {
             writer.write(data);
         } catch (IOException e){
             e.printStackTrace();
@@ -72,7 +64,7 @@ public class writeOrReadJsonFile {
         String path=filePath + fileName+ ".json";
         String result = "";
         // 读取数据，默认utf-8编码，如果有中文可以改为gbk
-        try(BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(path), "UTF-8"))) {
+        try(BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(path), StandardCharsets.UTF_8))) {
             String tempString;
             while ((tempString = reader.readLine()) != null) {
                 result += tempString;

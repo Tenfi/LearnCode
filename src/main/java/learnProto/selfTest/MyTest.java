@@ -20,120 +20,119 @@ public final class MyTest {
 
     /**
      * <code>uint32 uint32 = 1;</code>
-     * @return The uint32.
      */
     int getUint32();
 
     /**
      * <code>uint64 uint64 = 2;</code>
-     * @return The uint64.
      */
     long getUint64();
 
     /**
      * <code>int32 int32 = 3;</code>
-     * @return The int32.
      */
     int getInt32();
 
     /**
      * <code>int64 int64 = 4;</code>
-     * @return The int64.
      */
     long getInt64();
 
     /**
      * <code>sint32 sint32 = 5;</code>
-     * @return The sint32.
      */
     int getSint32();
 
     /**
      * <code>sint64 sint64 = 6;</code>
-     * @return The sint64.
      */
     long getSint64();
 
     /**
      * <code>fixed32 fixed32 = 7;</code>
-     * @return The fixed32.
      */
     int getFixed32();
 
     /**
      * <code>fixed64 fixed64 = 8;</code>
-     * @return The fixed64.
      */
     long getFixed64();
 
     /**
      * <code>bool bool = 9;</code>
-     * @return The bool.
      */
     boolean getBool();
 
     /**
      * <code>string str = 10;</code>
-     * @return The str.
      */
     java.lang.String getStr();
     /**
      * <code>string str = 10;</code>
-     * @return The bytes for str.
      */
     com.google.protobuf.ByteString
         getStrBytes();
 
     /**
      * <code>float float = 11;</code>
-     * @return The float.
      */
     float getFloat();
 
     /**
      * <code>double double = 12;</code>
-     * @return The double.
      */
     double getDouble();
+
+    /**
+     * <code>.google.protobuf.Timestamp time = 13;</code>
+     */
+    boolean hasTime();
+    /**
+     * <code>.google.protobuf.Timestamp time = 13;</code>
+     */
+    com.google.protobuf.Timestamp getTime();
+    /**
+     * <code>.google.protobuf.Timestamp time = 13;</code>
+     */
+    com.google.protobuf.TimestampOrBuilder getTimeOrBuilder();
   }
   /**
    * Protobuf type {@code Data}
    */
-  public static final class Data extends
+  public  static final class Data extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:Data)
       DataOrBuilder {
-  private static final long serialVersionUID = 0L;
     // Use Data.newBuilder() to construct.
     private Data(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
     private Data() {
+      uint32_ = 0;
+      uint64_ = 0L;
+      int32_ = 0;
+      int64_ = 0L;
+      sint32_ = 0;
+      sint64_ = 0L;
+      fixed32_ = 0;
+      fixed64_ = 0L;
+      bool_ = false;
       str_ = "";
-    }
-
-    @java.lang.Override
-    @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
-      return new Data();
+      float_ = 0F;
+      double_ = 0D;
     }
 
     @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
-      return this.unknownFields;
+      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
     }
     private Data(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
+      int mutable_bitField0_ = 0;
       try {
         boolean done = false;
         while (!done) {
@@ -142,6 +141,12 @@ public final class MyTest {
             case 0:
               done = true;
               break;
+            default: {
+              if (!input.skipField(tag)) {
+                done = true;
+              }
+              break;
+            }
             case 8: {
 
               uint32_ = input.readUInt32();
@@ -203,11 +208,17 @@ public final class MyTest {
               double_ = input.readDouble();
               break;
             }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
+            case 106: {
+              com.google.protobuf.Timestamp.Builder subBuilder = null;
+              if (time_ != null) {
+                subBuilder = time_.toBuilder();
               }
+              time_ = input.readMessage(com.google.protobuf.Timestamp.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(time_);
+                time_ = subBuilder.buildPartial();
+              }
+
               break;
             }
           }
@@ -218,7 +229,6 @@ public final class MyTest {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
-        this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
@@ -227,7 +237,6 @@ public final class MyTest {
       return learnProto.selfTest.MyTest.internal_static_Data_descriptor;
     }
 
-    @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return learnProto.selfTest.MyTest.internal_static_Data_fieldAccessorTable
@@ -239,9 +248,7 @@ public final class MyTest {
     private int uint32_;
     /**
      * <code>uint32 uint32 = 1;</code>
-     * @return The uint32.
      */
-    @java.lang.Override
     public int getUint32() {
       return uint32_;
     }
@@ -250,9 +257,7 @@ public final class MyTest {
     private long uint64_;
     /**
      * <code>uint64 uint64 = 2;</code>
-     * @return The uint64.
      */
-    @java.lang.Override
     public long getUint64() {
       return uint64_;
     }
@@ -261,9 +266,7 @@ public final class MyTest {
     private int int32_;
     /**
      * <code>int32 int32 = 3;</code>
-     * @return The int32.
      */
-    @java.lang.Override
     public int getInt32() {
       return int32_;
     }
@@ -272,9 +275,7 @@ public final class MyTest {
     private long int64_;
     /**
      * <code>int64 int64 = 4;</code>
-     * @return The int64.
      */
-    @java.lang.Override
     public long getInt64() {
       return int64_;
     }
@@ -283,9 +284,7 @@ public final class MyTest {
     private int sint32_;
     /**
      * <code>sint32 sint32 = 5;</code>
-     * @return The sint32.
      */
-    @java.lang.Override
     public int getSint32() {
       return sint32_;
     }
@@ -294,9 +293,7 @@ public final class MyTest {
     private long sint64_;
     /**
      * <code>sint64 sint64 = 6;</code>
-     * @return The sint64.
      */
-    @java.lang.Override
     public long getSint64() {
       return sint64_;
     }
@@ -305,9 +302,7 @@ public final class MyTest {
     private int fixed32_;
     /**
      * <code>fixed32 fixed32 = 7;</code>
-     * @return The fixed32.
      */
-    @java.lang.Override
     public int getFixed32() {
       return fixed32_;
     }
@@ -316,9 +311,7 @@ public final class MyTest {
     private long fixed64_;
     /**
      * <code>fixed64 fixed64 = 8;</code>
-     * @return The fixed64.
      */
-    @java.lang.Override
     public long getFixed64() {
       return fixed64_;
     }
@@ -327,9 +320,7 @@ public final class MyTest {
     private boolean bool_;
     /**
      * <code>bool bool = 9;</code>
-     * @return The bool.
      */
-    @java.lang.Override
     public boolean getBool() {
       return bool_;
     }
@@ -338,9 +329,7 @@ public final class MyTest {
     private volatile java.lang.Object str_;
     /**
      * <code>string str = 10;</code>
-     * @return The str.
      */
-    @java.lang.Override
     public java.lang.String getStr() {
       java.lang.Object ref = str_;
       if (ref instanceof java.lang.String) {
@@ -355,9 +344,7 @@ public final class MyTest {
     }
     /**
      * <code>string str = 10;</code>
-     * @return The bytes for str.
      */
-    @java.lang.Override
     public com.google.protobuf.ByteString
         getStrBytes() {
       java.lang.Object ref = str_;
@@ -376,9 +363,7 @@ public final class MyTest {
     private float float_;
     /**
      * <code>float float = 11;</code>
-     * @return The float.
      */
-    @java.lang.Override
     public float getFloat() {
       return float_;
     }
@@ -387,15 +372,33 @@ public final class MyTest {
     private double double_;
     /**
      * <code>double double = 12;</code>
-     * @return The double.
      */
-    @java.lang.Override
     public double getDouble() {
       return double_;
     }
 
+    public static final int TIME_FIELD_NUMBER = 13;
+    private com.google.protobuf.Timestamp time_;
+    /**
+     * <code>.google.protobuf.Timestamp time = 13;</code>
+     */
+    public boolean hasTime() {
+      return time_ != null;
+    }
+    /**
+     * <code>.google.protobuf.Timestamp time = 13;</code>
+     */
+    public com.google.protobuf.Timestamp getTime() {
+      return time_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : time_;
+    }
+    /**
+     * <code>.google.protobuf.Timestamp time = 13;</code>
+     */
+    public com.google.protobuf.TimestampOrBuilder getTimeOrBuilder() {
+      return getTime();
+    }
+
     private byte memoizedIsInitialized = -1;
-    @java.lang.Override
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized == 1) return true;
@@ -405,7 +408,6 @@ public final class MyTest {
       return true;
     }
 
-    @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (uint32_ != 0) {
@@ -444,10 +446,11 @@ public final class MyTest {
       if (double_ != 0D) {
         output.writeDouble(12, double_);
       }
-      unknownFields.writeTo(output);
+      if (time_ != null) {
+        output.writeMessage(13, getTime());
+      }
     }
 
-    @java.lang.Override
     public int getSerializedSize() {
       int size = memoizedSize;
       if (size != -1) return size;
@@ -500,11 +503,15 @@ public final class MyTest {
         size += com.google.protobuf.CodedOutputStream
           .computeDoubleSize(12, double_);
       }
-      size += unknownFields.getSerializedSize();
+      if (time_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(13, getTime());
+      }
       memoizedSize = size;
       return size;
     }
 
+    private static final long serialVersionUID = 0L;
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
@@ -515,34 +522,41 @@ public final class MyTest {
       }
       learnProto.selfTest.MyTest.Data other = (learnProto.selfTest.MyTest.Data) obj;
 
-      if (getUint32()
-          != other.getUint32()) return false;
-      if (getUint64()
-          != other.getUint64()) return false;
-      if (getInt32()
-          != other.getInt32()) return false;
-      if (getInt64()
-          != other.getInt64()) return false;
-      if (getSint32()
-          != other.getSint32()) return false;
-      if (getSint64()
-          != other.getSint64()) return false;
-      if (getFixed32()
-          != other.getFixed32()) return false;
-      if (getFixed64()
-          != other.getFixed64()) return false;
-      if (getBool()
-          != other.getBool()) return false;
-      if (!getStr()
-          .equals(other.getStr())) return false;
-      if (java.lang.Float.floatToIntBits(getFloat())
-          != java.lang.Float.floatToIntBits(
-              other.getFloat())) return false;
-      if (java.lang.Double.doubleToLongBits(getDouble())
-          != java.lang.Double.doubleToLongBits(
-              other.getDouble())) return false;
-      if (!unknownFields.equals(other.unknownFields)) return false;
-      return true;
+      boolean result = true;
+      result = result && (getUint32()
+          == other.getUint32());
+      result = result && (getUint64()
+          == other.getUint64());
+      result = result && (getInt32()
+          == other.getInt32());
+      result = result && (getInt64()
+          == other.getInt64());
+      result = result && (getSint32()
+          == other.getSint32());
+      result = result && (getSint64()
+          == other.getSint64());
+      result = result && (getFixed32()
+          == other.getFixed32());
+      result = result && (getFixed64()
+          == other.getFixed64());
+      result = result && (getBool()
+          == other.getBool());
+      result = result && getStr()
+          .equals(other.getStr());
+      result = result && (
+          java.lang.Float.floatToIntBits(getFloat())
+          == java.lang.Float.floatToIntBits(
+              other.getFloat()));
+      result = result && (
+          java.lang.Double.doubleToLongBits(getDouble())
+          == java.lang.Double.doubleToLongBits(
+              other.getDouble()));
+      result = result && (hasTime() == other.hasTime());
+      if (hasTime()) {
+        result = result && getTime()
+            .equals(other.getTime());
+      }
+      return result;
     }
 
     @java.lang.Override
@@ -583,6 +597,10 @@ public final class MyTest {
       hash = (37 * hash) + DOUBLE_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
           java.lang.Double.doubleToLongBits(getDouble()));
+      if (hasTime()) {
+        hash = (37 * hash) + TIME_FIELD_NUMBER;
+        hash = (53 * hash) + getTime().hashCode();
+      }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -658,7 +676,6 @@ public final class MyTest {
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
-    @java.lang.Override
     public Builder newBuilderForType() { return newBuilder(); }
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
@@ -666,7 +683,6 @@ public final class MyTest {
     public static Builder newBuilder(learnProto.selfTest.MyTest.Data prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
-    @java.lang.Override
     public Builder toBuilder() {
       return this == DEFAULT_INSTANCE
           ? new Builder() : new Builder().mergeFrom(this);
@@ -690,7 +706,6 @@ public final class MyTest {
         return learnProto.selfTest.MyTest.internal_static_Data_descriptor;
       }
 
-      @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return learnProto.selfTest.MyTest.internal_static_Data_fieldAccessorTable
@@ -713,7 +728,6 @@ public final class MyTest {
                 .alwaysUseFieldBuilders) {
         }
       }
-      @java.lang.Override
       public Builder clear() {
         super.clear();
         uint32_ = 0;
@@ -740,21 +754,24 @@ public final class MyTest {
 
         double_ = 0D;
 
+        if (timeBuilder_ == null) {
+          time_ = null;
+        } else {
+          time_ = null;
+          timeBuilder_ = null;
+        }
         return this;
       }
 
-      @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
         return learnProto.selfTest.MyTest.internal_static_Data_descriptor;
       }
 
-      @java.lang.Override
       public learnProto.selfTest.MyTest.Data getDefaultInstanceForType() {
         return learnProto.selfTest.MyTest.Data.getDefaultInstance();
       }
 
-      @java.lang.Override
       public learnProto.selfTest.MyTest.Data build() {
         learnProto.selfTest.MyTest.Data result = buildPartial();
         if (!result.isInitialized()) {
@@ -763,7 +780,6 @@ public final class MyTest {
         return result;
       }
 
-      @java.lang.Override
       public learnProto.selfTest.MyTest.Data buildPartial() {
         learnProto.selfTest.MyTest.Data result = new learnProto.selfTest.MyTest.Data(this);
         result.uint32_ = uint32_;
@@ -778,43 +794,41 @@ public final class MyTest {
         result.str_ = str_;
         result.float_ = float_;
         result.double_ = double_;
+        if (timeBuilder_ == null) {
+          result.time_ = time_;
+        } else {
+          result.time_ = timeBuilder_.build();
+        }
         onBuilt();
         return result;
       }
 
-      @java.lang.Override
       public Builder clone() {
-        return super.clone();
+        return (Builder) super.clone();
       }
-      @java.lang.Override
       public Builder setField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.setField(field, value);
+          Object value) {
+        return (Builder) super.setField(field, value);
       }
-      @java.lang.Override
       public Builder clearField(
           com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return super.clearField(field);
+        return (Builder) super.clearField(field);
       }
-      @java.lang.Override
       public Builder clearOneof(
           com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return super.clearOneof(oneof);
+        return (Builder) super.clearOneof(oneof);
       }
-      @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return super.setRepeatedField(field, index, value);
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
       }
-      @java.lang.Override
       public Builder addRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.addRepeatedField(field, value);
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
       }
-      @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof learnProto.selfTest.MyTest.Data) {
           return mergeFrom((learnProto.selfTest.MyTest.Data)other);
@@ -863,17 +877,17 @@ public final class MyTest {
         if (other.getDouble() != 0D) {
           setDouble(other.getDouble());
         }
-        this.mergeUnknownFields(other.unknownFields);
+        if (other.hasTime()) {
+          mergeTime(other.getTime());
+        }
         onChanged();
         return this;
       }
 
-      @java.lang.Override
       public final boolean isInitialized() {
         return true;
       }
 
-      @java.lang.Override
       public Builder mergeFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -895,16 +909,12 @@ public final class MyTest {
       private int uint32_ ;
       /**
        * <code>uint32 uint32 = 1;</code>
-       * @return The uint32.
        */
-      @java.lang.Override
       public int getUint32() {
         return uint32_;
       }
       /**
        * <code>uint32 uint32 = 1;</code>
-       * @param value The uint32 to set.
-       * @return This builder for chaining.
        */
       public Builder setUint32(int value) {
         
@@ -914,7 +924,6 @@ public final class MyTest {
       }
       /**
        * <code>uint32 uint32 = 1;</code>
-       * @return This builder for chaining.
        */
       public Builder clearUint32() {
         
@@ -926,16 +935,12 @@ public final class MyTest {
       private long uint64_ ;
       /**
        * <code>uint64 uint64 = 2;</code>
-       * @return The uint64.
        */
-      @java.lang.Override
       public long getUint64() {
         return uint64_;
       }
       /**
        * <code>uint64 uint64 = 2;</code>
-       * @param value The uint64 to set.
-       * @return This builder for chaining.
        */
       public Builder setUint64(long value) {
         
@@ -945,7 +950,6 @@ public final class MyTest {
       }
       /**
        * <code>uint64 uint64 = 2;</code>
-       * @return This builder for chaining.
        */
       public Builder clearUint64() {
         
@@ -957,16 +961,12 @@ public final class MyTest {
       private int int32_ ;
       /**
        * <code>int32 int32 = 3;</code>
-       * @return The int32.
        */
-      @java.lang.Override
       public int getInt32() {
         return int32_;
       }
       /**
        * <code>int32 int32 = 3;</code>
-       * @param value The int32 to set.
-       * @return This builder for chaining.
        */
       public Builder setInt32(int value) {
         
@@ -976,7 +976,6 @@ public final class MyTest {
       }
       /**
        * <code>int32 int32 = 3;</code>
-       * @return This builder for chaining.
        */
       public Builder clearInt32() {
         
@@ -988,16 +987,12 @@ public final class MyTest {
       private long int64_ ;
       /**
        * <code>int64 int64 = 4;</code>
-       * @return The int64.
        */
-      @java.lang.Override
       public long getInt64() {
         return int64_;
       }
       /**
        * <code>int64 int64 = 4;</code>
-       * @param value The int64 to set.
-       * @return This builder for chaining.
        */
       public Builder setInt64(long value) {
         
@@ -1007,7 +1002,6 @@ public final class MyTest {
       }
       /**
        * <code>int64 int64 = 4;</code>
-       * @return This builder for chaining.
        */
       public Builder clearInt64() {
         
@@ -1019,16 +1013,12 @@ public final class MyTest {
       private int sint32_ ;
       /**
        * <code>sint32 sint32 = 5;</code>
-       * @return The sint32.
        */
-      @java.lang.Override
       public int getSint32() {
         return sint32_;
       }
       /**
        * <code>sint32 sint32 = 5;</code>
-       * @param value The sint32 to set.
-       * @return This builder for chaining.
        */
       public Builder setSint32(int value) {
         
@@ -1038,7 +1028,6 @@ public final class MyTest {
       }
       /**
        * <code>sint32 sint32 = 5;</code>
-       * @return This builder for chaining.
        */
       public Builder clearSint32() {
         
@@ -1050,16 +1039,12 @@ public final class MyTest {
       private long sint64_ ;
       /**
        * <code>sint64 sint64 = 6;</code>
-       * @return The sint64.
        */
-      @java.lang.Override
       public long getSint64() {
         return sint64_;
       }
       /**
        * <code>sint64 sint64 = 6;</code>
-       * @param value The sint64 to set.
-       * @return This builder for chaining.
        */
       public Builder setSint64(long value) {
         
@@ -1069,7 +1054,6 @@ public final class MyTest {
       }
       /**
        * <code>sint64 sint64 = 6;</code>
-       * @return This builder for chaining.
        */
       public Builder clearSint64() {
         
@@ -1081,16 +1065,12 @@ public final class MyTest {
       private int fixed32_ ;
       /**
        * <code>fixed32 fixed32 = 7;</code>
-       * @return The fixed32.
        */
-      @java.lang.Override
       public int getFixed32() {
         return fixed32_;
       }
       /**
        * <code>fixed32 fixed32 = 7;</code>
-       * @param value The fixed32 to set.
-       * @return This builder for chaining.
        */
       public Builder setFixed32(int value) {
         
@@ -1100,7 +1080,6 @@ public final class MyTest {
       }
       /**
        * <code>fixed32 fixed32 = 7;</code>
-       * @return This builder for chaining.
        */
       public Builder clearFixed32() {
         
@@ -1112,16 +1091,12 @@ public final class MyTest {
       private long fixed64_ ;
       /**
        * <code>fixed64 fixed64 = 8;</code>
-       * @return The fixed64.
        */
-      @java.lang.Override
       public long getFixed64() {
         return fixed64_;
       }
       /**
        * <code>fixed64 fixed64 = 8;</code>
-       * @param value The fixed64 to set.
-       * @return This builder for chaining.
        */
       public Builder setFixed64(long value) {
         
@@ -1131,7 +1106,6 @@ public final class MyTest {
       }
       /**
        * <code>fixed64 fixed64 = 8;</code>
-       * @return This builder for chaining.
        */
       public Builder clearFixed64() {
         
@@ -1143,16 +1117,12 @@ public final class MyTest {
       private boolean bool_ ;
       /**
        * <code>bool bool = 9;</code>
-       * @return The bool.
        */
-      @java.lang.Override
       public boolean getBool() {
         return bool_;
       }
       /**
        * <code>bool bool = 9;</code>
-       * @param value The bool to set.
-       * @return This builder for chaining.
        */
       public Builder setBool(boolean value) {
         
@@ -1162,7 +1132,6 @@ public final class MyTest {
       }
       /**
        * <code>bool bool = 9;</code>
-       * @return This builder for chaining.
        */
       public Builder clearBool() {
         
@@ -1174,7 +1143,6 @@ public final class MyTest {
       private java.lang.Object str_ = "";
       /**
        * <code>string str = 10;</code>
-       * @return The str.
        */
       public java.lang.String getStr() {
         java.lang.Object ref = str_;
@@ -1190,7 +1158,6 @@ public final class MyTest {
       }
       /**
        * <code>string str = 10;</code>
-       * @return The bytes for str.
        */
       public com.google.protobuf.ByteString
           getStrBytes() {
@@ -1207,8 +1174,6 @@ public final class MyTest {
       }
       /**
        * <code>string str = 10;</code>
-       * @param value The str to set.
-       * @return This builder for chaining.
        */
       public Builder setStr(
           java.lang.String value) {
@@ -1222,7 +1187,6 @@ public final class MyTest {
       }
       /**
        * <code>string str = 10;</code>
-       * @return This builder for chaining.
        */
       public Builder clearStr() {
         
@@ -1232,8 +1196,6 @@ public final class MyTest {
       }
       /**
        * <code>string str = 10;</code>
-       * @param value The bytes for str to set.
-       * @return This builder for chaining.
        */
       public Builder setStrBytes(
           com.google.protobuf.ByteString value) {
@@ -1250,16 +1212,12 @@ public final class MyTest {
       private float float_ ;
       /**
        * <code>float float = 11;</code>
-       * @return The float.
        */
-      @java.lang.Override
       public float getFloat() {
         return float_;
       }
       /**
        * <code>float float = 11;</code>
-       * @param value The float to set.
-       * @return This builder for chaining.
        */
       public Builder setFloat(float value) {
         
@@ -1269,7 +1227,6 @@ public final class MyTest {
       }
       /**
        * <code>float float = 11;</code>
-       * @return This builder for chaining.
        */
       public Builder clearFloat() {
         
@@ -1281,16 +1238,12 @@ public final class MyTest {
       private double double_ ;
       /**
        * <code>double double = 12;</code>
-       * @return The double.
        */
-      @java.lang.Override
       public double getDouble() {
         return double_;
       }
       /**
        * <code>double double = 12;</code>
-       * @param value The double to set.
-       * @return This builder for chaining.
        */
       public Builder setDouble(double value) {
         
@@ -1300,7 +1253,6 @@ public final class MyTest {
       }
       /**
        * <code>double double = 12;</code>
-       * @return This builder for chaining.
        */
       public Builder clearDouble() {
         
@@ -1308,16 +1260,131 @@ public final class MyTest {
         onChanged();
         return this;
       }
-      @java.lang.Override
+
+      private com.google.protobuf.Timestamp time_ = null;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> timeBuilder_;
+      /**
+       * <code>.google.protobuf.Timestamp time = 13;</code>
+       */
+      public boolean hasTime() {
+        return timeBuilder_ != null || time_ != null;
+      }
+      /**
+       * <code>.google.protobuf.Timestamp time = 13;</code>
+       */
+      public com.google.protobuf.Timestamp getTime() {
+        if (timeBuilder_ == null) {
+          return time_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : time_;
+        } else {
+          return timeBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.google.protobuf.Timestamp time = 13;</code>
+       */
+      public Builder setTime(com.google.protobuf.Timestamp value) {
+        if (timeBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          time_ = value;
+          onChanged();
+        } else {
+          timeBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.google.protobuf.Timestamp time = 13;</code>
+       */
+      public Builder setTime(
+          com.google.protobuf.Timestamp.Builder builderForValue) {
+        if (timeBuilder_ == null) {
+          time_ = builderForValue.build();
+          onChanged();
+        } else {
+          timeBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.google.protobuf.Timestamp time = 13;</code>
+       */
+      public Builder mergeTime(com.google.protobuf.Timestamp value) {
+        if (timeBuilder_ == null) {
+          if (time_ != null) {
+            time_ =
+              com.google.protobuf.Timestamp.newBuilder(time_).mergeFrom(value).buildPartial();
+          } else {
+            time_ = value;
+          }
+          onChanged();
+        } else {
+          timeBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.google.protobuf.Timestamp time = 13;</code>
+       */
+      public Builder clearTime() {
+        if (timeBuilder_ == null) {
+          time_ = null;
+          onChanged();
+        } else {
+          time_ = null;
+          timeBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.google.protobuf.Timestamp time = 13;</code>
+       */
+      public com.google.protobuf.Timestamp.Builder getTimeBuilder() {
+        
+        onChanged();
+        return getTimeFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.google.protobuf.Timestamp time = 13;</code>
+       */
+      public com.google.protobuf.TimestampOrBuilder getTimeOrBuilder() {
+        if (timeBuilder_ != null) {
+          return timeBuilder_.getMessageOrBuilder();
+        } else {
+          return time_ == null ?
+              com.google.protobuf.Timestamp.getDefaultInstance() : time_;
+        }
+      }
+      /**
+       * <code>.google.protobuf.Timestamp time = 13;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> 
+          getTimeFieldBuilder() {
+        if (timeBuilder_ == null) {
+          timeBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder>(
+                  getTime(),
+                  getParentForChildren(),
+                  isClean());
+          time_ = null;
+        }
+        return timeBuilder_;
+      }
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFields(unknownFields);
+        return this;
       }
 
-      @java.lang.Override
       public final Builder mergeUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.mergeUnknownFields(unknownFields);
+        return this;
       }
 
 
@@ -1336,12 +1403,11 @@ public final class MyTest {
 
     private static final com.google.protobuf.Parser<Data>
         PARSER = new com.google.protobuf.AbstractParser<Data>() {
-      @java.lang.Override
       public Data parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new Data(input, extensionRegistry);
+          return new Data(input, extensionRegistry);
       }
     };
 
@@ -1354,7 +1420,6 @@ public final class MyTest {
       return PARSER;
     }
 
-    @java.lang.Override
     public learnProto.selfTest.MyTest.Data getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
@@ -1375,24 +1440,41 @@ public final class MyTest {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\ntest.proto\"\300\001\n\004Data\022\016\n\006uint32\030\001 \001(\r\022\016\n" +
-      "\006uint64\030\002 \001(\004\022\r\n\005int32\030\003 \001(\005\022\r\n\005int64\030\004 " +
-      "\001(\003\022\016\n\006sint32\030\005 \001(\021\022\016\n\006sint64\030\006 \001(\022\022\017\n\007f" +
-      "ixed32\030\007 \001(\007\022\017\n\007fixed64\030\010 \001(\006\022\014\n\004bool\030\t " +
-      "\001(\010\022\013\n\003str\030\n \001(\t\022\r\n\005float\030\013 \001(\002\022\016\n\006doubl" +
-      "e\030\014 \001(\001B\035\n\023learnProto.selfTestB\006MyTestb\006" +
-      "proto3"
+      "\n\ntest.proto\032\037google/protobuf/timestamp." +
+      "proto\032\031google/protobuf/any.proto\032\036google" +
+      "/protobuf/wrappers.proto\"\352\001\n\004Data\022\016\n\006uin" +
+      "t32\030\001 \001(\r\022\016\n\006uint64\030\002 \001(\004\022\r\n\005int32\030\003 \001(\005" +
+      "\022\r\n\005int64\030\004 \001(\003\022\016\n\006sint32\030\005 \001(\021\022\016\n\006sint6" +
+      "4\030\006 \001(\022\022\017\n\007fixed32\030\007 \001(\007\022\017\n\007fixed64\030\010 \001(" +
+      "\006\022\014\n\004bool\030\t \001(\010\022\013\n\003str\030\n \001(\t\022\r\n\005float\030\013 " +
+      "\001(\002\022\016\n\006double\030\014 \001(\001\022(\n\004time\030\r \001(\0132\032.goog" +
+      "le.protobuf.TimestampB\035\n\023learnProto.self" +
+      "TestB\006MyTestb\006proto3"
     };
-    descriptor = com.google.protobuf.Descriptors.FileDescriptor
+    com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
+        new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
+          public com.google.protobuf.ExtensionRegistry assignDescriptors(
+              com.google.protobuf.Descriptors.FileDescriptor root) {
+            descriptor = root;
+            return null;
+          }
+        };
+    com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
-        });
+          com.google.protobuf.TimestampProto.getDescriptor(),
+          com.google.protobuf.AnyProto.getDescriptor(),
+          com.google.protobuf.WrappersProto.getDescriptor(),
+        }, assigner);
     internal_static_Data_descriptor =
       getDescriptor().getMessageTypes().get(0);
     internal_static_Data_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Data_descriptor,
-        new java.lang.String[] { "Uint32", "Uint64", "Int32", "Int64", "Sint32", "Sint64", "Fixed32", "Fixed64", "Bool", "Str", "Float", "Double", });
+        new java.lang.String[] { "Uint32", "Uint64", "Int32", "Int64", "Sint32", "Sint64", "Fixed32", "Fixed64", "Bool", "Str", "Float", "Double", "Time", });
+    com.google.protobuf.TimestampProto.getDescriptor();
+    com.google.protobuf.AnyProto.getDescriptor();
+    com.google.protobuf.WrappersProto.getDescriptor();
   }
 
   // @@protoc_insertion_point(outer_class_scope)

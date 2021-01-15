@@ -3,6 +3,7 @@ package codeBasis.streamBasis;
 import org.junit.Test;
 
 import java.io.*;
+import java.nio.charset.CharsetEncoder;
 import java.nio.charset.StandardCharsets;
 
 /**
@@ -54,9 +55,9 @@ public class writeOrReadCsvFile {
 
 
 
-    public void writeToCsv(String fileName){
+    public void writeToCsv(String filePath,String fileName){
         File file = new File("C:\\Users\\admin\\Desktop\\"+fileName+".csv");
-        try (BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file,true),"utf-8"))) {
+        try (BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file,true), StandardCharsets.UTF_8))) {
             // 首行写字段名
             if (file.length() == 0) {
                 String header = "field1,field2";
@@ -64,7 +65,7 @@ public class writeOrReadCsvFile {
             }
             // 添加行分隔符 "\n"
             writer.newLine();
-            String content = "1,2";
+            String content = "1,2,是";
             writer.write(content);
             writer.flush();
         } catch (IOException e) {
@@ -73,21 +74,24 @@ public class writeOrReadCsvFile {
     }
 
 
-    public static void main(String[] args){
-        String str = "你好hello";
-        int byte_len = str.getBytes().length;
-        int len = str.length();
-        System.out.println("字节长度为：" + byte_len);
-        System.out.println("字符长度为：" + len);
-        System.out.println("系统默认编码方式：" + System.getProperty("file.encoding"));
+    public void readFromCsv(String filePath,String fileName){
+        File file = new File("C:\\Users\\admin\\Desktop\\"+fileName+".csv");
+        String result = "";
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(file), StandardCharsets.UTF_8))) {
+            String tempString;
+            while ((tempString = reader.readLine()) != null) {
+                result += tempString;
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @Test
     public void test(){
-        readFileByByte();
-        System.out.println("=======");
-        readFileByChar();
-//        readFile();
-//        writeToCsv("csv1");
+        String filePath ="C:\\Users\\admin\\Desktop\\";
+        String fileName = "demo";
+        writeToCsv(filePath,fileName);
+        readFromCsv(filePath,fileName);
     }
 }

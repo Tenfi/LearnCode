@@ -4,7 +4,9 @@ syntax = "proto3";
 
 option java_package = "learnProto.selfTest";
 option java_outer_classname = "MyTest";
-
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/any.proto";
+import "google/protobuf/wrappers.proto";
 
 message Data{
 	uint32 uint32 = 1;
@@ -19,5 +21,6 @@ message Data{
 	string str = 10;
 	float  float=11;
 	double double=12;
+	google.protobuf.Timestamp time = 13;
 }
 

@@ -1,0 +1,27 @@
+// Google Protocol Buffers Version 3.
+syntax = "proto3";
+
+// Package name.
+package prcticeProto.base;
+
+// Options for code generation.
+option java_package = "learnProto.practiceTest.protoModel";
+option java_outer_classname = "PersonModel";
+option java_multiple_files = true;
+
+message Person{
+  message Location{
+    string placeName=1;
+    uint64 placeId=2;
+  }
+  enum Gender{
+    man=0;
+    woman=1;
+  }
+  string name = 1;
+  int32 age=2;
+  Gender gender=3;
+  float height=4;
+  double weight=5;
+  Location location=6;
+}

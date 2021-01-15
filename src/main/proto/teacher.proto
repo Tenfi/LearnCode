@@ -1,0 +1,12 @@
+// Google Protocol Buffers Version 3.
+syntax = "proto3";
+
+// Options for code generation.
+option java_package = "learnProto.practiceTest.protoModel";
+option java_outer_classname = "TeacherModel";
+option java_multiple_files = true;
+
+message Teacher{
+  string name = 1;
+  int32 age=2;
+}

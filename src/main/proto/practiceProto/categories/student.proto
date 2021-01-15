@@ -1,0 +1,19 @@
+// Google Protocol Buffers Version 3.
+syntax = "proto3";
+
+// Package name.
+package prcticeProto.categories;
+
+// Options for code generation.
+option java_package = "learnProto.practiceTest.protoModel";
+option java_outer_classname = "StudentModel";
+option java_multiple_files = true;
+
+// import packages
+import "practiceProto/base/person.proto";
+
+message Student {
+  base.Person baseInfo = 1;
+  fixed32 calssId = 2;
+  sint32 score = 3;
+}

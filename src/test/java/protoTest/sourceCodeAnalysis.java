@@ -2,6 +2,8 @@ package protoTest;
 
 import org.junit.Test;
 
+import java.util.UUID;
+
 public class sourceCodeAnalysis {
     public void print(int value){
         System.out.println("value="+value+",其二进制串为（左侧的0省略）："+Integer.toBinaryString(value));
@@ -29,6 +31,8 @@ public class sourceCodeAnalysis {
 //        print(computeRawVarint32Size(value));
 //        print((1<<3));
 //        print((1<<3)-1);
-        print(127);
+//        print(127);
+        String a =UUID.randomUUID().toString();
+        System.out.println(a);
     }
 }
