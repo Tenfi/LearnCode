@@ -2,9 +2,7 @@ package workTest;
 
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 /**
  * @author huangtengfei
@@ -65,5 +63,36 @@ public class RSDparse {
             temp.add(String.join("",list));
         }
         return String.join("",temp);
+    }
+
+
+    public boolean isPalindrome(int x) {
+        if(x<0){
+            return false;
+        }
+
+        int length=0;
+        int num=x;
+        while(num!=0){
+            num/=10;
+            length++;
+        }
+
+        for(int i=0;i<length/2+1;i++){
+            int left= (x/(int)Math.pow(10,length-1-2*i));
+            int right=x%10;
+            if(left!=right){
+                return false;
+            }
+            x=(int)((x%Math.pow(10,length-1-2*i))/10);
+        }
+
+        return true;
+    }
+
+    @Test
+    public void test3(){
+        boolean palindrome = isPalindrome(10);
+
     }
 }
