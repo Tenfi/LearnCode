@@ -16,7 +16,6 @@ import java.util.Arrays;
 
 public class Test {
 
-
     public static void writeFileByte(byte[] b,String path) {
         File file = new File(path);
         long size = file.length();
@@ -27,7 +26,6 @@ public class Test {
             e.printStackTrace();
         }
     }
-
 
     public static byte[] readFileByte(String path) {
         File file = new File(path);
@@ -47,13 +45,11 @@ public class Test {
         Person.Builder builderPerson = Person.newBuilder().setAge(10).setGender(Person.Gender.woman).setName("Tom").setHeight(100.00f).setWeight(100.00d).setLocation(
                 Person.Location.newBuilder().setPlaceId(123l).setPlaceName("hubei")
         );
-
-        Student.Builder builderStudent1 = Student.newBuilder().setBaseInfo(builderPerson).setCalssId(10).setScore(-1);
-        Student.Builder builderStudent2 = Student.newBuilder().setBaseInfo(builderPerson).setCalssId(10).setScore(1);
         School school = School.newBuilder()
                 .setIsOpen(true)
                 .setSchoolLocation(School.Location.newBuilder().setId(123).setName("hubei"))
-                .addAllStudents(builderStudent1).addAllStudents(builderStudent2)
+                .addAllStudents(Student.newBuilder().setBaseInfo(builderPerson).setCalssId(10).setScore(-1))
+                .addAllStudents(Student.newBuilder().setBaseInfo(builderPerson).setCalssId(10).setScore(1))
                 .build();
 
         // 序列化
@@ -70,7 +66,5 @@ public class Test {
         } catch (InvalidProtocolBufferException e) {
             e.printStackTrace();
         }
-
-
     }
 }

@@ -46,12 +46,9 @@ public class Test {
         Person person = new Person().setAge(10).setGender(Person.Gender.MAN).setName("Tom").setHeight(100.00f).setWeight(100.00d).setPersonLocation(
                 new Person.Location().setPlaceId(123l).setPlaceName("hubei")
         );
-        Student stu = new Student().setCalssId(10).setScore(-1).setBaseInfo(person);
-        Student stu1 = new Student().setCalssId(10).setScore(1).setBaseInfo(person);
-
         ArrayList<Student> studentArrayList = new ArrayList<>();
-        studentArrayList.add(stu);
-        studentArrayList.add(stu1);
+        studentArrayList.add(new Student().setCalssId(10).setScore(-1).setBaseInfo(person));
+        studentArrayList.add(new Student().setCalssId(10).setScore(1).setBaseInfo(person));
 
         School sch = new School().setOpen(true).setAllStudents(studentArrayList).setSchoolLocation(new School.Location().setId(123).setName("hubei"));
 
@@ -69,8 +66,8 @@ public class Test {
             e.printStackTrace();
         }
 
-        //返回的内容即为 Protobuf的IDL描述文件
-        String code = ProtobufIDLGenerator.getIDL(School.class);
-        System.out.println(code);
+//        //返回的内容即为 Protobuf的IDL描述文件
+//        String code = ProtobufIDLGenerator.getIDL(School.class);
+//        System.out.println(code);
     }
 }
