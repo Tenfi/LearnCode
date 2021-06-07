@@ -89,7 +89,6 @@ public class parallelStreamTest {
      */
     public void test2(){
         List<Integer> list = getIntegers();
-
         list.stream().forEach(x->writeToCsv(x,"test2"));
     }
 

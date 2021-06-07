@@ -1,5 +1,6 @@
 package codeBasis.streamBasis;
 
+import org.apache.commons.io.input.ReaderInputStream;
 import org.junit.Test;
 
 import java.io.*;
@@ -34,6 +35,8 @@ public class writeOrReadCsvFile {
             int n;
             while ((n = input.read(buffer)) != -1) { // 读取到缓冲区
                 System.out.println("read " + n + " bytes.");
+                // 每次读取后,把数组的有效字节部分，变成字符串打印
+                System.out.println(new String(buffer,0,n));//  len 每次读取的有效字节个数
             }
         }catch (IOException e) {
             e.printStackTrace();
@@ -43,7 +46,7 @@ public class writeOrReadCsvFile {
     public void readFileByChar() {
         try (FileReader input = new FileReader("C:\\Users\\admin\\Desktop\\demo.txt")) {
             int n;
-            // 按字节读取数据
+            // 按字符读取数据
             while ((n = input.read()) != -1) {
                 System.out.println((char)n);
             }
@@ -53,19 +56,17 @@ public class writeOrReadCsvFile {
         }
     }
 
-
-
     public void writeToCsv(String filePath,String fileName){
         File file = new File("C:\\Users\\admin\\Desktop\\"+fileName+".csv");
-        try (BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file,true), StandardCharsets.UTF_8))) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(file,true))) {
             // 首行写字段名
             if (file.length() == 0) {
-                String header = "field1,field2";
+                String header = "field1,field2,s,d";
                 writer.write(header);
             }
             // 添加行分隔符 "\n"
             writer.newLine();
-            String content = "1,2,是";
+            String content = "1,2,是,asd";
             writer.write(content);
             writer.flush();
         } catch (IOException e) {
@@ -77,7 +78,7 @@ public class writeOrReadCsvFile {
     public void readFromCsv(String filePath,String fileName){
         File file = new File("C:\\Users\\admin\\Desktop\\"+fileName+".csv");
         String result = "";
-        try (BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(file), StandardCharsets.UTF_8))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
             String tempString;
             while ((tempString = reader.readLine()) != null) {
                 result += tempString;
@@ -90,7 +91,8 @@ public class writeOrReadCsvFile {
     @Test
     public void test(){
         String filePath ="C:\\Users\\admin\\Desktop\\";
-        String fileName = "demo";
+//        String fileName = "ARK-SP9-TRAFFIC_LIGHT";
+        String fileName = "test";
         writeToCsv(filePath,fileName);
         readFromCsv(filePath,fileName);
     }
