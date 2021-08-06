@@ -8,10 +8,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
-import java.util.function.BiFunction;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 /**
  * @author huangtengfei
@@ -20,30 +18,62 @@ import java.util.stream.Stream;
  */
 public class appleTest {
 
+    class Person {
+        private Car car;
 
-    public List<Apple> filterApple(List<Apple> apples, Predicate<Apple> a){
+        public Car getCar() {
+            return car;
+        }
+    }
+
+    class Car {
+        private Insurance insurance;
+
+        public Insurance getInsurance() {
+            return insurance;
+        }
+    }
+
+    class Insurance {
+        private String name;
+
+        public String getName() {
+            return name;
+        }
+    }
+
+    public List<Apple> filterApple(List<Apple> apples, Predicate<Apple> a) {
         List<Apple> appleList = new ArrayList<>();
         for (Apple apple : apples) {
-            if (a.test(apple)){
+            if (a.test(apple)) {
                 appleList.add(apple);
             }
         }
         return appleList;
     }
 
+    @Test
+    public void test() {
+        List<Object> objects = new ArrayList<>();
+        Object o = Optional.ofNullable(objects);
+
+
+        Person person = new Person();
+//        String name = person.getCar().getInsurance().getName();
+        Optional<String> s = Optional.ofNullable(person).map(Person::getCar).map(Car::getInsurance).map(Insurance::getName);
+    }
 
     @Test
-    public void normalTest(){
+    public void normalTest() {
         Supplier<Apple> appleSupplier = Apple::new;
         Apple apple1 = appleSupplier.get();
 
         List<Apple> appleList = new ArrayList<>();
-        appleList.add(new Apple("green",12));
-        appleList.add(new Apple("red",13));
-        appleList.add(new Apple("blue",14));
+        appleList.add(new Apple("green", 12));
+        appleList.add(new Apple("red", 13));
+        appleList.add(new Apple("blue", 14));
 
         appleList.remove(2);
-
 
 
         List<Apple> appleList2 = appleList.subList(0, 0);
@@ -64,7 +94,7 @@ public class appleTest {
 
 
         List<Integer> a = Arrays.asList(1, 2, 3);
-        List<Integer> b = Arrays.asList(3,4);
+        List<Integer> b = Arrays.asList(3, 4);
 
         List<int[]> collect2 = a.stream().flatMap(i -> b.stream().map(
                 j -> new int[]{i, j})).collect(Collectors.toList());
